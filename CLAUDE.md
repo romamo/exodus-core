@@ -24,7 +24,7 @@ docker build -t exodus-core .
 docker run -it --rm exodus-core python -m unittest discover -s exodus_core -p "test_*.py"
 ```
 
-Note: `setup.py` refuses to run on `darwin`/`win32`. On macOS, use Docker for anything that runs the full analysis pipeline. CI runs on Python 3.10–3.14.
+Note: `setup.py` refuses to run on `darwin`/`win32`. On macOS, use Docker for anything that runs the full analysis pipeline. CI runs on Python 3.10 and 3.14 (oldest and newest supported).
 
 Sample APKs for manual testing live in `apks/` (whatsapp, nextcloud, hsbc, etc.). Several tests in `test_exodus_analyze.py` reference APK paths and are effectively fixtures/examples.
 
