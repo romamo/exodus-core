@@ -14,14 +14,12 @@ if sys.platform == 'darwin' or sys.platform == 'win32':
     sys.exit(1)
 
 install_requires = [
-    'androguard==4.1.4',
-    'cryptography==50.0.0',
-    'dhash==1.4',
-    'jellyfish==1.2.1',
-    'Pillow==12.3.0',
-    'requests>=2.26,<2.34',
-    'six==1.15.0',
-    'traitlets==5.16.1'
+    'androguard>=4.1.1,<5',
+    'cryptography>=46',
+    'dhash>=1.4',
+    'jellyfish>=1.0,<2',
+    'Pillow>=10',
+    'requests>=2.26,<3',
 ]
 
 setup(
