@@ -53,6 +53,8 @@ jobs:
     needs: build
     if: github.event_name == 'push' && github.ref_type == 'tag'
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
       - name: Download archive
@@ -60,11 +62,6 @@ jobs:
         with:
           name: release-3.10
           path: dist
-      - name: Publish package to pypi on tag
-        uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          user: __token__
-          password: ${{ secrets.PYPI_API_TOKEN }}
       - name: Create release
         run: |
           cd dist

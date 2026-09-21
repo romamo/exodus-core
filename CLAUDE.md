@@ -50,4 +50,4 @@ Three independent surfaces under `exodus_core/`:
 
 - Dependency ranges in `setup.py` `install_requires` are authoritative for release; `requirements.txt` mirrors them for local/dev install. Keep them as lower bounds (plus a major-version cap where APIs are sensitive), not exact pins, so downstream apps can resolve alongside them. `androguard>=4.1.1,<5` is the analysis backbone and the APIs used (`androguard.core.apk.APK`, `androguard.core.axml`) are version-sensitive.
 - `flake8` ignores `E501` (line length) and `W605`; `apk_signature.py` is fully excluded.
-- Version lives in `setup.py` (`version=`). Releases are tag-driven: pushing a `v*` tag triggers CI to build an sdist and publish to PyPI.
+- Version lives in `setup.py` (`version=`). Releases are tag-driven: pushing a `v*` tag triggers CI to build an sdist and attach it to a GitHub release on the fork. It does not publish to PyPI: the `exodus-core` name there belongs to upstream Exodus Privacy.
