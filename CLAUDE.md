@@ -24,7 +24,7 @@ docker build -t exodus-core .
 docker run -it --rm exodus-core python -m unittest discover -s exodus_core -p "test_*.py"
 ```
 
-Note: `setup.py` refuses to run on `darwin`/`win32`. On macOS, use Docker for anything that runs the full analysis pipeline. CI runs on Python 3.11–3.14; `.python-version` pins 3.10 locally.
+Note: `setup.py` refuses to run on `darwin`/`win32`. On macOS, use Docker for anything that runs the full analysis pipeline. CI runs on Python 3.10 and 3.14 (oldest and newest supported).
 
 Sample APKs for manual testing live in `apks/` (whatsapp, nextcloud, hsbc, etc.). Several tests in `test_exodus_analyze.py` reference APK paths and are effectively fixtures/examples.
 
@@ -48,6 +48,6 @@ Three independent surfaces under `exodus_core/`:
 
 ## Conventions
 
-- Pinned dependencies in `setup.py` `install_requires` are authoritative for release; `requirements.txt` is for local/dev install. `androguard==4.1.1` is the analysis backbone and the APIs used (`androguard.core.apk.APK`, `androguard.core.axml`) are version-sensitive.
+- Dependency ranges in `setup.py` `install_requires` are authoritative for release; `requirements.txt` mirrors them for local/dev install. Keep them as lower bounds (plus a major-version cap where APIs are sensitive), not exact pins, so downstream apps can resolve alongside them. `androguard>=4.1.1,<5` is the analysis backbone and the APIs used (`androguard.core.apk.APK`, `androguard.core.axml`) are version-sensitive.
 - `flake8` ignores `E501` (line length) and `W605`; `apk_signature.py` is fully excluded.
 - Version lives in `setup.py` (`version=`). Releases are tag-driven: pushing a `v*` tag triggers CI to build an sdist and publish to PyPI.

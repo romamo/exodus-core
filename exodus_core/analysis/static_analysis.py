@@ -12,7 +12,6 @@ from tempfile import NamedTemporaryFile, TemporaryDirectory
 
 import dhash
 import requests
-import six
 from androguard.core import axml
 from androguard.core.apk import APK
 from androguard.util import set_log
@@ -466,7 +465,7 @@ class StaticAnalysis:
         def _my_name_init(self, oid, value, _type):
             if not isinstance(oid, ObjectIdentifier):
                 raise TypeError("oid argument must be an ObjectIdentifier instance.")
-            if not isinstance(value, six.text_type):
+            if not isinstance(value, str):
                 raise TypeError("value argument must be a text type.")
             if len(value) == 0:
                 raise ValueError("Value cannot be an empty string")

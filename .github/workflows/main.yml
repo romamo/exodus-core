@@ -22,9 +22,7 @@ jobs:
     strategy:
       matrix:
         python-version:
-          - 3.11
-          - 3.12
-          - 3.13
+          - "3.10"
           - 3.14
     steps:
       - uses: actions/checkout@v4
@@ -60,7 +58,7 @@ jobs:
       - name: Download archive
         uses: actions/download-artifact@v4
         with:
-          name: release-3.11
+          name: release-3.10
           path: dist
       - name: Publish package to pypi on tag
         uses: pypa/gh-action-pypi-publish@release/v1
